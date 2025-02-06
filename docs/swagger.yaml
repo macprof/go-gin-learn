@@ -1,4 +1,13 @@
 definitions:
+  dto.LoginDto:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    type: object
   dto.UserDto:
     properties:
       email:
@@ -13,6 +22,8 @@ definitions:
         type: string
       platform:
         type: string
+    required:
+    - email
     type: object
   types.Response:
     properties:
@@ -29,6 +40,28 @@ definitions:
 info:
   contact: {}
 paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: login user
+      parameters:
+      - description: Login
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.Response'
+      summary: Login User
+      tags:
+      - Auth
   /auth/register:
     post:
       consumes:

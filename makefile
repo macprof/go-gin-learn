@@ -1,2 +1,2 @@
 dev: 
-	export swag init && ENV=dev && go run main.go
+	swag init && export ENV=dev && go run main.go
